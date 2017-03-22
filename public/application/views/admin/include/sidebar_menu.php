@@ -62,7 +62,7 @@
                         </a>                            
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect waves-block">                                
+                        <a href="<?= site_url() ?>admin/properti/add" class="waves-effect waves-block">                                
                             <span>Tambah Properti</span>
                         </a>                            
                     </li>

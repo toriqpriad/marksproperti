@@ -20,13 +20,13 @@ class properti extends admin {
         $get = $this->data_model->get($params);
         return $get;
     }
-    
+
     //Data on Page
     public function data() {
         $this->data['title_page'] = "Data Properti";
         $dest_table_as = 'properti as p';
-        $select_values = array('p.id', 'p.judul','p.alamat','p.jenis','p.terjual','p.harga','k.name as kat');
-        $join_data1 = array("join_with" => 'kategori_properti as k', "join_on" => 'p.kat_properti = k.id', "join_type" => '');        
+        $select_values = array('p.id', 'p.judul', 'p.alamat', 'p.jenis', 'p.terjual', 'p.harga', 'k.name as kat');
+        $join_data1 = array("join_with" => 'kategori_properti as k', "join_on" => 'p.kat_properti = k.id', "join_type" => '');
         $join_tables = array($join_data1);
         $params = new stdClass();
         $params->dest_table_as = $dest_table_as;
@@ -72,8 +72,10 @@ class properti extends admin {
 //    }
 
     public function add() {
-        $this->data['title_page'] = "Tambah Data Kategori Properti";
-        $this->load->view('admin/kategori_properti/add', $this->data);
+        $kat_properti = $this->get_kat_properti();        
+        $this->data['kat_properti'] = $kat_properti["results"];
+        $this->data['title_page'] = "Tambah Data Properti";
+        $this->load->view('admin/properti/add', $this->data);
     }
 
     //Data Processing

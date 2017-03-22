@@ -93,7 +93,7 @@
             ]
         });
     </script>
-    <?php $this->load->view('admin/kategori_properti/modal'); ?>
+    <?php $this->load->view('admin/properti/modal'); ?>
     <?php $this->load->view('admin/include/footer_menu'); ?>
 
 </html>
