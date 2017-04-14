@@ -40,65 +40,14 @@
 
 
     function Put() {
-        var id = $('#tpq_id').val();
+        var id = $('#kategori_id').val();
         var nama = $('#nama').val();
-        var pc = $('#pc').val();
-        var kontak = $('#kontak').val();
-        var alamat = $('#alamat').val();
-        var wilayah = $('#wilayah').val();
-        var email = $('#email').val();
-        if ($('#new_password').val() == '') {
-            var password = '';
-        } else {
-            var password = $.md5($('#new_password').val());
-        }
-        var pgrs = [];
-        $(".nama_pgrs").each(function (index, item) {
-            var id_kategori_pgrs = $(item).attr('param');
-            var nama_pgrs = $(item).val();
-            if (nama_pgrs == undefined) {
-                nama_pgrs = '';
-            }
-            var data_pgrs = {"id": id_kategori_pgrs, "nama": nama_pgrs}
-            pgrs.push(data_pgrs)
-        })
-        var old_logo = $('#logo_old').val();
-        var new_logo = $('#logo_new').val();
-
-        var new_cover = $('#cover_new').val();
-        var old_cover = $('#cover_old').val();
-
-        if (new_logo != undefined) {
-            var logo = $('#logo').prop('files')[0];
-        } else {
-            var logo = 'old';
-        }
-
-        if (new_cover != undefined) {
-            var cover = $('#cover').prop('files')[0];
-        } else {
-            var cover = 'old';
-        }
-
+        
         var input = new FormData();
         input.append('id', id);
-        input.append('nama', nama);
-        input.append('pc', pc);
-        input.append('kontak', kontak);
-        input.append('email', email);
-        input.append('password', password);
-        input.append('alamat', alamat);
-        input.append('wilayah', wilayah);
-        input.append('pengurus', JSON.stringify(pgrs));
-        input.append('old_logo', old_logo);
-        input.append('old_cover', old_cover);
-        input.append('logo', logo);
-        input.append('cover', cover);
-
-//        console.log(input);
-
+        input.append('nama', nama);        
         $.ajax({
-            url: url + 'tpq/update_submit',
+            url: url + 'kategori_properti/update_submit',
             method: 'POST',
             data: input,
             dataType: 'json',

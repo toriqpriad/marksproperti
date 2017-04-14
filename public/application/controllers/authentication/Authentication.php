@@ -5,11 +5,9 @@ class authentication extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('authentication_model');
-//        $this->load->model('guide_model');
-//        $this->load->model('log_mail_model');
         $this->load->library(array('curl', 'session', 'email'));
         $this->load->helper(array('form', 'url', 'jwt_helper', 'rest_response_helper', 'key_helper', 'send_mail_helper', 'client_access_helper'));
-        $this->data = [];        
+        $this->data = [];
     }
 
     function register() {
@@ -34,16 +32,16 @@ class authentication extends CI_Controller {
                 $params = new stdClass();
                 $params->username = $input->username;
                 $params->password = $input->password;
-                $get = $this->authentication_model->login($params);                
+                $get = $this->authentication_model->login($params);
                 if ($get['response'] == OK_STATUS) {
                     $date = date('Y-m-d');
                     $expr_date = date('Y-m-d', time() + 86400);
-                    $include = array(                      
+                    $include = array(
                         'name' => $get['results']->name,
                         'role' => $get['results']->role,
                         'created_date' => $date,
                         'expire_date' => $expr_date
-                    );                    
+                    );
                     $data['token'] = JWT::encode(get_success($include), SERVER_SECRET_KEY);
                     $data['role'] = $get['results']->role;
                     // SET WEB SESSION //
@@ -141,6 +139,33 @@ class authentication extends CI_Controller {
             $res = $res['message'];
         }
         echo $res;
+    }
+
+    public function checkwebtoken() {
+        try {
+            $token = json_decode(file_get_contents('php://input'));
+            if ($token == "") {
+                $response = response_fail();
+            } else {
+                $decode = JWT::decode($token, SERVER_SECRET_KEY, JWT_ALGHORITMA);
+                if (!$decode) {
+                    $response = response_fail();
+                } else {
+                    if ($decode->response != OK_STATUS) {
+                        $response = response_fail();
+                    } else {
+                        if ($decode->data->role != "A") {
+                            $response = response_fail();
+                        } else {
+                            $response = response_success();
+                        }
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            $response = response_fail();
+        }
+        echo json_encode($response);
     }
 
 }

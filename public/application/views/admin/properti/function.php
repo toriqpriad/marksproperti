@@ -7,12 +7,48 @@
 
     function Add() {
 
-        var nama = $('#nama').val();
+        var judul = $('#judul').val();
+        var deskripsi = CKEDITOR.instances.deskripsi.getData();
+        var alamat = $('#alamat').val();
+        var kat_properti = $('#kat_properti').val();
+        var jenis_properti = $('#jenis_properti').val();
+        var sertifikat = $('#sertifikat').val();
+        var luas_tanah = $('#luas_tanah').val();
+        var luas_bangunan = $('#luas_bangunan').val();
+        var kamar_tidur = $('#kamar_tidur').val();
+        var kamar_mandi = $('#kamar_mandi').val();
+        var video_url = $('#video_url').val();
+        var harga = $('#harga').val();
+
+        //        GAMBAR
+        var gambar1 = $('#gambar1').prop('files')[0];
+        var gambar2 = $('#gambar2').prop('files')[0];
+        var gambar3 = $('#gambar3').prop('files')[0];
+        var gambar4 = $('#gambar4').prop('files')[0];
+
+
         var input = new FormData();
-        input.append('nama', nama);
+        input.append('judul', judul);
+        input.append('deskripsi', deskripsi);
+        input.append('alamat', alamat);
+        input.append('kat_properti', kat_properti);
+        input.append('jenis_properti', jenis_properti);
+        input.append('sertifikat', sertifikat);
+        input.append('luas_tanah', luas_tanah);
+        input.append('luas_bangunan', luas_bangunan);
+        input.append('kamar_tidur', kamar_tidur);
+        input.append('kamar_mandi', kamar_mandi);
+        input.append('video_url', video_url);
+        input.append('harga', harga);
+        input.append('gambar1', gambar1);
+        input.append('gambar2', gambar2);
+        input.append('gambar3', gambar3);
+        input.append('gambar4', gambar4);
+//        input.append('old_to_delete', old_delete);
+
 
         $.ajax({
-            url: url + 'kategori_properti/add_submit',
+            url: url + 'properti/add_submit',
             method: 'POST',
             data: input,
             dataType: 'json',
@@ -38,67 +74,118 @@
         });
     }
 
+    function removeDuplicate(list) {
 
+        var result = [];
+        $.each(list, function (i, e) {
+            if ($.inArray(e, result) == -1)
+                result.push(e);
+        });
+        return result;
+    }
     function Put() {
-        var id = $('#tpq_id').val();
-        var nama = $('#nama').val();
-        var pc = $('#pc').val();
-        var kontak = $('#kontak').val();
+        var id = $('#properti_id').val();
+        var judul = $('#judul').val();
+//        var deskripsi = $('#deskripsi').val();        
+        var deskripsi = CKEDITOR.instances.deskripsi.getData();
+//        console.log();
         var alamat = $('#alamat').val();
-        var wilayah = $('#wilayah').val();
-        var email = $('#email').val();
-        if ($('#new_password').val() == '') {
-            var password = '';
-        } else {
-            var password = $.md5($('#new_password').val());
-        }
-        var pgrs = [];
-        $(".nama_pgrs").each(function (index, item) {
-            var id_kategori_pgrs = $(item).attr('param');
-            var nama_pgrs = $(item).val();
-            if (nama_pgrs == undefined) {
-                nama_pgrs = '';
+        var kat_properti = $('#kat_properti').val();
+        var jenis_properti = $('#jenis_properti').val();
+        var sertifikat = $('#sertifikat').val();
+        var luas_tanah = $('#luas_tanah').val();
+        var luas_bangunan = $('#luas_bangunan').val();
+        var kamar_tidur = $('#kamar_tidur').val();
+        var kamar_mandi = $('#kamar_mandi').val();
+        var video_url = $('#video_url').val();
+        var harga = $('#harga').val();
+
+        var old_gambar_1 = $('#old_gambar_1').val();
+        var old_gambar_2 = $('#old_gambar_2').val();
+        var old_gambar_3 = $('#old_gambar_3').val();
+        var old_gambar_4 = $('#old_gambar_4').val();
+
+        var old_gambar_back_1 = $('#old_gambar_back_1').val();
+        var old_gambar_back_2 = $('#old_gambar_back_2').val();
+        var old_gambar_back_3 = $('#old_gambar_back_3').val();
+        var old_gambar_back_4 = $('#old_gambar_back_4').val();
+        var old_delete = [];
+        if (old_gambar_1 == "") {
+            if ($('#gambar1').prop('files')[0] != "") {
+                var gambar1 = $('#gambar1').prop('files')[0];
+                old_delete.push(old_gambar_back_1);
+            } else {
+                var gambar1 = "";
             }
-            var data_pgrs = {"id": id_kategori_pgrs, "nama": nama_pgrs}
-            pgrs.push(data_pgrs)
+
+        } else {
+            var gambar1 = old_gambar_1;
+        }
+
+        if (old_gambar_2 == "") {
+            if ($('#gambar2').prop('files')[0] != "") {
+                var gambar2 = $('#gambar2').prop('files')[0];
+                old_delete.push(old_gambar_back_2);
+            } else {
+                var gambar2 = "";
+            }
+
+        } else {
+            var gambar2 = old_gambar_2;
+        }
+
+        if (old_gambar_3 == "") {
+            if ($('#gambar3').prop('files')[0] != "") {
+                var gambar3 = $('#gambar3').prop('files')[0];
+                old_delete.push(old_gambar_back_3);
+            } else {
+                var gambar3 = "";
+            }
+
+        } else {
+            var gambar3 = old_gambar_3;
+        }
+
+        if (old_gambar_4 == "") {
+            if ($('#gambar4').prop('files')[0] != "") {
+                var gambar4 = $('#gambar4').prop('files')[0];
+                old_delete.push(old_gambar_back_4);
+            } else {
+                var gambar4 = "";
+            }
+        } else {
+            var gambar4 = old_gambar_4;
+        }
+
+        $('.old').each(function () {
+            old_delete.push($(this).val());
         })
-        var old_logo = $('#logo_old').val();
-        var new_logo = $('#logo_new').val();
 
-        var new_cover = $('#cover_new').val();
-        var old_cover = $('#cover_old').val();
-
-        if (new_logo != undefined) {
-            var logo = $('#logo').prop('files')[0];
-        } else {
-            var logo = 'old';
-        }
-
-        if (new_cover != undefined) {
-            var cover = $('#cover').prop('files')[0];
-        } else {
-            var cover = 'old';
-        }
-
+        var old_delete = removeDuplicate(old_delete);
+        
         var input = new FormData();
         input.append('id', id);
-        input.append('nama', nama);
-        input.append('pc', pc);
-        input.append('kontak', kontak);
-        input.append('email', email);
-        input.append('password', password);
+        input.append('judul', judul);
+        input.append('deskripsi', deskripsi);
         input.append('alamat', alamat);
-        input.append('wilayah', wilayah);
-        input.append('pengurus', JSON.stringify(pgrs));
-        input.append('old_logo', old_logo);
-        input.append('old_cover', old_cover);
-        input.append('logo', logo);
-        input.append('cover', cover);
+        input.append('kat_properti', kat_properti);
+        input.append('jenis_properti', jenis_properti);
+        input.append('sertifikat', sertifikat);
+        input.append('luas_tanah', luas_tanah);
+        input.append('luas_bangunan', luas_bangunan);
+        input.append('kamar_tidur', kamar_tidur);
+        input.append('kamar_mandi', kamar_mandi);
+        input.append('video_url', video_url);
+        input.append('harga', harga);
+        input.append('gambar1', gambar1);
+        input.append('gambar2', gambar2);
+        input.append('gambar3', gambar3);
+        input.append('gambar4', gambar4);
+        input.append('old_to_delete', JSON.stringify(old_delete));
 
-//        console.log(input);
 
         $.ajax({
-            url: url + 'tpq/update_submit',
+            url: url + 'properti/update_submit',
             method: 'POST',
             data: input,
             dataType: 'json',
@@ -108,12 +195,13 @@
             processData: false,
             success: function (response) {
                 if (response.response == 'OK') {
+                    console.log(response);
                     $.notify({
                         message: '<i class="mdi mdi-check-all"></i> ' + response.message,
                     }, {type: 'success'})
                     setTimeout(function ()
                     {
-                        window.location.href = response.data.link;
+//                        window.location.href = response.data.link;
                     }, 1000);
                 } else {
                     $.notify({
@@ -134,7 +222,7 @@
     function DeleteProcess() {
         var id = $('#id').val();
         $.ajax({
-            url: url + 'kategori_properti/delete/' + id,
+            url: url + 'properti/delete/' + id,
             method: 'GET',
             dataType: 'json',
 //            contentType: 'application/json',

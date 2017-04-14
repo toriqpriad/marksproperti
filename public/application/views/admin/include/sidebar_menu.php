@@ -26,7 +26,7 @@
                 }
                 ?>                
                 <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
-                    <i class="mdi mdi-filter mdi-24px"></i>
+                    <i class="mdi mdi-flag-variant mdi-24px"></i>
                     <span>Kategori Properti</span>
                 </a>
                 <ul class="ml-menu" style="display: none;">
@@ -82,85 +82,125 @@
                 </a>
                 <ul class="ml-menu" style="display: none;">
                     <li>
-                        <a href="<?= site_url() ?>admin/pengajar/add" class="waves-effect waves-block">                                
+                        <a href="<?= site_url() ?>admin/artikel" class="waves-effect waves-block">                                
                             <span>Data Artikel</span>
                         </a>                            
                     </li>
                     <li>
-                        <a href="<?= site_url() ?>admin/pengajar" class="waves-effect waves-block">                                
+                        <a href="<?= site_url() ?>admin/artikel/add" class="waves-effect waves-block">                                
                             <span>Tambah Artikel</span>
                         </a>                            
                     </li>
 
                 </ul>
                 </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
-                        <i class="mdi mdi-tag-multiple mdi-24px"></i>
-                        <span>Iklan</span>
-                    </a>
-                    <ul class="ml-menu" style="display: none;">
-                        <li>
-                            <a href="javascript:void(0);" class="waves-effect waves-block">                                
-                                <span>Data Iklan</span>
-                            </a>                            
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="waves-effect waves-block">                                
-                                <span>Tambah Iklan</span>
-                            </a>                            
-                        </li>
+                <?php
+                if ($active_page == 'iklan') {
+                    echo '<li class="active">';
+                } else {
+                    echo '<li>';
+                }
+                ?>  
+                <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                    <i class="mdi mdi-tag-multiple mdi-24px"></i>
+                    <span>Iklan</span>
+                </a>
+                <ul class="ml-menu" style="display: none;">
+                    <li>
+                        <a href="<?= site_url() ?>admin/iklan" class="waves-effect waves-block">                                
+                            <span>Data Iklan</span>
+                        </a>                            
+                    </li>
+                    <li>
+                        <a href="<?= site_url() ?>admin/iklan/add" class="waves-effect waves-block">                                
+                            <span>Tambah Iklan</span>
+                        </a>                            
+                    </li>
 
 
-                    </ul>
+                </ul>
                 </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
-                        <i class="mdi mdi-book-open-page-variant mdi-24px"></i>
-                        <span>Portfolio</span>
-                    </a>
-                    <ul class="ml-menu" style="display: none;">
-                        <li>
-                            <a href="javascript:void(0);" class="waves-effect waves-block">                                
-                                <span>Data Portfolio</span>
-                            </a>                            
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="waves-effect waves-block">                                
-                                <span>Tambah Portfolio</span>
-                            </a>                            
-                        </li>
+                <?php
+                if ($active_page == 'portfolio') {
+                    echo '<li class="active">';
+                } else {
+                    echo '<li>';
+                }
+                ?>  
+                <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                    <i class="mdi mdi-book-open-page-variant mdi-24px"></i>
+                    <span>Portfolio</span>
+                </a>
+                <ul class="ml-menu" style="display: none;">
+                    <li>
+                        <a href="<?= site_url() ?>admin/portfolio" class="waves-effect waves-block">                                
+                            <span>Data Portfolio</span>
+                        </a>                            
+                    </li>
+                    <li>
+                        <a href="<?= site_url() ?>admin/portfolio/add" class="waves-effect waves-block">                                
+                            <span>Tambah Portfolio</span>
+                        </a>                            
+                    </li>
 
 
-                    </ul>
+                </ul>
                 </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
-                        <i class="mdi mdi-incognito mdi-24px"></i>
-                        <span>Developer</span>
-                    </a>
-                    <ul class="ml-menu" style="display: none;">
-                        <li>
-                            <a href="javascript:void(0);" class="waves-effect waves-block">                                
-                                <span>Data Developer</span>
-                            </a>                            
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="waves-effect waves-block">                                
-                                <span>Tambah Developer</span>
-                            </a>                            
-                        </li>
-
-
-                    </ul>
-                </li>                
+                <?php
+                if ($active_page == 'developer') {
+                    echo '<li class="active">';
+                } else {
+                    echo '<li>';
+                }
+                ?>  
+                <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                    <i class="mdi mdi-incognito mdi-24px"></i>
+                    <span>Developer</span>
+                </a>
+                <ul class="ml-menu" style="display: none;">
+                    <li>
+                        <a href="<?= site_url() ?>admin/developer" class="waves-effect waves-block">                                
+                            <span>Data Developer</span>
+                        </a>                            
+                    </li>
+                    <li>
+                        <a href="<?= site_url() ?>admin/developer/add" class="waves-effect waves-block">                                
+                            <span>Tambah Developer</span>
+                        </a>                            
+                    </li>
+                </ul>
+                </li>
+                <?php
+                if ($active_page == 'setting') {
+                    echo '<li class="active">';
+                } else {
+                    echo '<li>';
+                }
+                ?>                  
+                <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                    <i class="mdi mdi-account-settings-variant mdi-24px"></i>
+                    <span>Setting</span>
+                </a>
+                <ul class="ml-menu" style="display: none;">
+                    <li>
+                        <a href="<?= site_url() ?>admin/setting/website" class="waves-effect waves-block">                                
+                            <span>Website</span>
+                        </a>                            
+                    </li>
+                    <li>
+                        <a href="<?= site_url() ?>admin/setting/account" class="waves-effect waves-block">                                
+                            <span>Login</span>
+                        </a>                            
+                    </li>
+                </ul>
+                </li>
             </ul>
         </div>
         <!-- #Menu -->
         <!-- Footer -->
         <div class="legal">
             <div class="copyright">
-                <a href="javascript:void(0);">SIGRUS - LDII KOTA BATU</a> &copy; 2017
+                <a href="javascript:void(0);">Marksproperti.com </a> &copy; 2017
             </div>
 
         </div>

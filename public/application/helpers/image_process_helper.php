@@ -10,14 +10,15 @@ if (!defined('BASEPATH'))
 
 function image_upload($image_form, $images_count, $upload_path) {
     $ci = & get_instance();
+    $ci->load->helper('key_helper');
     $config = array();
     $config['upload_path'] = $upload_path;
     $config['allowed_types'] = 'jpeg|jpg|png';
-    $config['max_size'] = '2000';
+    $config['max_size'] = '5000';
     for ($i = 0; $i < $images_count; $i++) {
         $_FILES['img']['name_first'] = $image_form['name'];
         $_FILES['img']['extension'] = pathinfo($_FILES['img']['name_first'], PATHINFO_EXTENSION);
-        $_FILES['img']['name'] = md5($_FILES['img']['name_first']) . '.' . $_FILES['img']['extension'];
+        $_FILES['img']['name'] = generate_key('6') . '.' . $_FILES['img']['extension'];
         $_FILES['img']['type'] = $image_form['type'];
         $_FILES['img']['tmp_name'] = $image_form['tmp_name'];
         $_FILES['img']['error'] = $image_form['error'];

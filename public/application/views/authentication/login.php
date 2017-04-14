@@ -7,15 +7,14 @@
     <title>
         <?=$title_page?>
     </title>
-    <?php $this->load->view('static/files'); ?>
+    <?php $this->load->view('authentication/static/files'); ?>
     <?php $this->load->view('authentication/include/function'); ?>
 </head>
 
 <body class="login-page" style="background-color: rgba(255, 193, 7, 0.13);">
     <div class="login-box">
         <div class="logo" >
-            <a href="javascript:void(0);" style="color: #03a9f4;">Sigrus - <b>LDII Kota Batu</b></a>
-            <small style="color: #607d8b;">Sistem Informasi Generus Berbasis Web</small>
+            <a href="javascript:void(0);" style="color: #03a9f4;"></b></a>            
         </div>
         <div class="card">
             <div class="body">

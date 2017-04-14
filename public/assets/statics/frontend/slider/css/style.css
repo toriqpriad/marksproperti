@@ -1,0 +1,87 @@
+.main-container {
+  padding: 10px 15px;
+}
+.skyblue {
+	background-color: #22c8ff;
+}
+.deepskyblue {
+	background-color: #00bfff;
+}
+.darkerskyblue {
+	background-color: #00a6dd;
+}
+.main-slider .carousel-control.right,
+.main-slider .carousel-control.left {
+	background-image: none;
+}
+.main-slider .carousel .item {
+	min-height: 350px; 
+	height: 100%;
+	width:100%; 
+}
+.main-slider .carousel-caption{
+	bottom: 18%;
+}
+
+.main-slider .carousel-caption h1,
+.main-slider .carousel .icon-container,
+.main-slider .carousel-caption button {
+}
+.main-slider .carousel-caption h1 {
+	font-size: 30px;
+	text-transform: uppercase;
+	padding: .5em;
+}
+.main-slider .carousel .icon-container {
+	display: inline-block;
+	font-size: 25px;
+	line-height: 25px;
+	padding: 1em;
+	text-align: center;
+	border-radius: 50%;
+}
+.main-slider .carousel-caption button {
+	border-color: #484848;
+	margin-top: 1em; 
+}
+
+.main-slider .carousel-caption button:hover {
+	background: #d10b20;
+	border-color: #d10b20;
+}
+
+/* Animation delays */
+.main-slider .carousel-caption h1:first-child {
+	-webkit-animation-delay: 1s;
+	        animation-delay: 1s;
+}
+
+.main-slider .carousel-caption h1:nth-child(2) {
+	-webkit-animation-delay: 2s;
+	        animation-delay: 2s;
+}
+
+.main-slider .carousel-caption button {
+	-webkit-animation-delay: 5s;
+	        animation-delay: 5s;
+}
+
+.main-slider .carousel-control .glyphicon-chevron-left, 
+.main-slider .carousel-control .glyphicon-chevron-right, 
+.main-slider .carousel-control .icon-next, 
+.main-slider .carousel-control .icon-prev{
+    font-size: 40px;
+}
+
+
+.main-slider .carousel-control{
+    width: 5%;
+    opacity: 0;
+}
+
+.main-slider .carousel-control:hover{
+    width: 15%;
+    opacity: 1;
+}
+
+

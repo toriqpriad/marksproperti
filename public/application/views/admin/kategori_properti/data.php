@@ -4,10 +4,12 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title><?= $title_page ?></title>       
+        <title>
+            <?= $title_page ?>
+        </title>       
         <?php
-        $this->load->view('static/files');
-        $this->load->view('static/table');
+        $this->load->view('admin/static/files');
+        $this->load->view('admin/static/table');
         ?>    
     </head>
     <?php
@@ -24,7 +26,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                <?= $title_page ?>
+<?= $title_page ?>
                             </h2>                            
                         </div>
                         <div class="body">
@@ -38,21 +40,22 @@
                                         </tr>
                                     </thead>                               
                                     <tbody> 
-                                        <?php
-                                        $no = 1;
-                                        if ($record != "") {
-                                            foreach ($record as $item) {
-                                                echo "<tr>";
-                                                echo "<td>$no</td>";
-                                                echo "<td>" . $item->name . "</td>";                                                
-                                                echo "<td><button class='btn btn-danger' onclick='Delete(" . $item->id . ")'><i class='fa fa-trash'><i></button></td>";
-                                                echo "</tr>";
-                                                $no++;
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='7'>Tidak ada data</td></tr>";
-                                        }
-                                        ?>
+<?php
+$no = 1;
+if ($record != "") {
+
+    foreach ($record as $item) {
+        echo "<tr>";
+        echo "<td>$no</td>";
+        echo "<td>" . $item->name . "</td>";
+        echo "<td><a href='" . base_url() . 'admin/kategori_properti/detail/' . $item->id . "' class='btn btn-success'>Detail</a>&nbsp;<button class='btn btn-danger' onclick='Delete(" . $item->id . ")'>Hapus</button></td>";
+        echo "</tr>";
+        $no ++;
+    }
+} else {
+    echo "<tr><td colspan='7'>Tidak ada data</td></tr>";
+}
+?>
                                     </tbody>
                                 </table>
                             </small>
@@ -77,7 +80,11 @@
             ]
         });
     </script>
-    <?php $this->load->view('admin/kategori_properti/modal'); ?>
-    <?php $this->load->view('admin/include/footer_menu'); ?>
+<?php
+$this->load->view('admin/kategori_properti/modal');
+?>
+    <?php
+    $this->load->view('admin/include/footer_menu');
+    ?>
 
 </html>

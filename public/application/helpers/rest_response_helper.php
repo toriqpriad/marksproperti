@@ -4,8 +4,8 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 function response_custom($params) {
-    $results = array("response" => $params->response, "message" => $params->message, "data" => $params->data);
-    return $results;
+//    $results = array("response" => $params->response, "message" => $params->message, "data" => $params->data);
+    return $params;
 }
 
 function get_success($data) {

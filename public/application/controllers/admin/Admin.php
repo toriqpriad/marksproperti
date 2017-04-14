@@ -11,6 +11,25 @@ class admin extends CI_Controller {
         $this->checkauth();
     }
 
+    private function get_table_count($table) {
+        $dest_table_as = $table;
+        $select_values = array('*');
+        $params = new stdClass();
+        $params->dest_table_as = $dest_table_as;
+        $params->select_values = $select_values;
+        $get = $this->data_model->get($params);
+        if ($get['response'] == OK_STATUS) {
+            if (!empty($get['results'])) {
+                $total = count($get["results"]);
+            } else {
+                $total = '0';
+            }
+        } else {
+            $total = '0';
+        }
+        return $total;
+    }
+
     public function checkauth() {
         if ($this->session->userdata('web_token') == "") {
             redirect('login');
@@ -32,6 +51,15 @@ class admin extends CI_Controller {
     public function dashboard() {
         $this->data['active_page'] = "dashboard";
         $this->data['title_page'] = "Dashboard";
+        $this->data['total_data'] = array(
+            "kategori_properti" => $this->get_table_count('kategori_properti'),
+            "properti" => $this->get_table_count('properti'),
+            "artikel" => $this->get_table_count('artikel'),
+            "iklan" => $this->get_table_count('iklan'),
+            "developer" => $this->get_table_count('developer'),
+            "portfolio" => $this->get_table_count('portfolio'),            
+        );
+        print_r($this->data);
         $this->load->view('admin/index', $this->data);
     }
 

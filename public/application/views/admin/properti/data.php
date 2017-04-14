@@ -6,8 +6,8 @@
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <title><?= $title_page ?></title>       
         <?php
-        $this->load->view('static/files');
-        $this->load->view('static/table');
+        $this->load->view('admin/static/files');
+        $this->load->view('admin/static/table');        
         ?>    
     </head>
     <?php

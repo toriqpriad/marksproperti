@@ -361,7 +361,6 @@ class pengajar extends admin {
         $params_update->table_update = 'tb_pengajar';
         $update_logo_cover = $this->pengajar_model->update($params_update);
         if ($update_tpq['response'] == OK_STATUS AND $update_account['response'] == OK_STATUS) {
-//            $result = response_success();
             $params = new stdClass();
             $params->response = OK_STATUS;
             $params->message = OK_MESSAGE;

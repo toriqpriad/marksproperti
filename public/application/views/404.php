@@ -8,7 +8,7 @@
         <title>
             <?= $title_page ?>
         </title>
-        <?php $this->load->view('static/files'); ?>        
+        <?php $this->load->view('front/static/files'); ?>        
     </head>
 
     <body class="login-page" style="background-color: rgba(255, 193, 7, 0.13);">
