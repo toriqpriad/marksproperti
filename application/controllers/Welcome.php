@@ -26,7 +26,7 @@ class Welcome extends CI_Controller {
     }
 	
     public function index() {
-        redirect('home');
+        redirect('admin');
     }
 
     public function not_found() {

@@ -12,21 +12,22 @@ class admin extends CI_Controller {
         
     }
 
-    private function get_table_count($table) {
-        $dest_table_as = $table;
+    private function get_last_value() {
+        $dest_table_as = 'arduino as a';
         $select_values = array('*');
         $params = new stdClass();
         $params->dest_table_as = $dest_table_as;
         $params->select_values = $select_values;
+        $params->limit = '1';
         $get = $this->data_model->get($params);
         if ($get['response'] == OK_STATUS) {
             if (!empty($get['results'])) {
-                $total = count($get["results"]);
+                $total = $get["results"][0];
             } else {
-                $total = '0';
+                $total = [];
             }
         } else {
-            $total = '0';
+            $total = [];
         }
         return $total;
     }
@@ -52,6 +53,7 @@ class admin extends CI_Controller {
     public function dashboard() {
         $this->data['active_page'] = "dashboard";
         $this->data['title_page'] = "Dashboard";
+        $this->data['last_value'] = $this->get_last_value();
 //        $this->data['total_data'] = array(
 //            "kategori_properti" => $this->get_table_count('kategori_properti'),
 //            "properti" => $this->get_table_count('properti'),

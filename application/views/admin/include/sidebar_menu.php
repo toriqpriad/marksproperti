@@ -68,7 +68,7 @@
         <!-- Footer -->
         <div class="legal">
             <div class="copyright">
-                <a href="javascript:void(0);">Mikrokontroller </a> &copy; 2017
+                <a href="javascript:void(0);">Microcontroller - Class 0 </a> &copy; 2017
             </div>
 
         </div>
